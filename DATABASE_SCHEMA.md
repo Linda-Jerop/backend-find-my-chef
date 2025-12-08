@@ -85,9 +85,10 @@ You should create this diagram on [dbdiagram.io](https://dbdiagram.io) as per pr
 
 ## dbdiagram.io Code
 
-Paste this into [dbdiagram.io](https://dbdiagram.io) to generate the diagram:
+Paste this into [dbdiagram.io](https://dbdiagram.io) to generate the diagram to show the database diagram and display the relationships clearly,
+so that you see the thought process:
 
-```dbml
+```
 Table users {
   id integer [primary key]
   email varchar(255) [unique, not null]
