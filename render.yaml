@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: find-my-chef-api
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn run:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: find-my-chef-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: '["https://frontend-find-my-chef.onrender.com","http://localhost:5173"]'
+      
+databases:
+  - name: find-my-chef-db
+    plan: free
+    databaseName: find_my_chef
+    user: find_my_chef_user
