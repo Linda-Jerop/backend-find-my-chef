@@ -8,10 +8,27 @@ import app.models  # Importing models so SQLAlchemy registers tables before crea
 # Using the app engine/session here so tests and app share the same SQLite connection
 engine = app_engine
 TestingSessionLocal = AppSessionLocal
+from sqlalchemy.pool import StaticPool
+from app import create_app, Base, get_db
+
+SQLALCHEMY_TEST_DATABASE_URL = "sqlite:///:memory:"
+# Using StaticPool so the in-memory SQLite database is shared across connections during tests
+engine = create_engine(
+    SQLALCHEMY_TEST_DATABASE_URL,
+    connect_args={"check_same_thread": False},
+    poolclass=StaticPool,
+)
+TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
 @pytest.fixture(scope="function")
 def db_session():
+    # Importing model modules to ensure they are registered with Base.metadata before creating tables.
+    import app.models.user
+    import app.models.chef
+    import app.models.client
+    import app.models.booking
+
     Base.metadata.create_all(bind=engine)  # Creating fresh tables for each test.
     session = TestingSessionLocal()
     try:
