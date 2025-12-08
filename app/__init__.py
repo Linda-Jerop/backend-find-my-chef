@@ -23,6 +23,10 @@ def get_db():
         db.close()
 
 
+# Importing models to ensure they are registered on Base when the app package is imported  # Ensuring metadata is populated for tests
+import app.models  # noqa: E402,F401
+
+
 def create_app() -> FastAPI:
     app = FastAPI(title=settings.APP_NAME, version=settings.VERSION, docs_url="/api/docs", redoc_url="/api/redoc")
     

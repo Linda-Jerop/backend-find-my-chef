@@ -2,6 +2,12 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from app import create_app, Base, get_db, engine as app_engine, SessionLocal as AppSessionLocal
+import app.models  # Importing models so SQLAlchemy registers tables before create_all
+
+# Using the app engine/session here so tests and app share the same SQLite connection
+engine = app_engine
+TestingSessionLocal = AppSessionLocal
 from sqlalchemy.pool import StaticPool
 from app import create_app, Base, get_db
 
