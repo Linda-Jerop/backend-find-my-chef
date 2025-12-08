@@ -11,3 +11,4 @@ router = APIRouter()
 async def get_clients():
     """Get all clients"""
     return {"message": "Get all clients endpoint"}
+# Minimal client router placeholder; not used heavily by booking tests.
