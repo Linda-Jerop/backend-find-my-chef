@@ -2,7 +2,7 @@
 
 Backend API for the Find My Chef platform - connecting clients with professional chefs.
 
-## 🏗️ Project Structure
+## TheProject Structure
 
 ```
 backend-find-my-chef/
@@ -48,7 +48,7 @@ backend-find-my-chef/
 
 ```
 
-## 🛠️ Technologies
+## Technologies we useed
 
 - **Flask** - Web framework
 - **SQLAlchemy** - ORM
@@ -58,7 +58,7 @@ backend-find-my-chef/
 - **PostgreSQL/SQLite** - Database
 - **Bcrypt** - Password hashing
 
-## 📋 API Endpoints
+## API endpoints
 
 ### Authentication
 - `POST /api/auth/register` - Register new user (client/chef)
@@ -84,7 +84,7 @@ backend-find-my-chef/
 - `PATCH /api/bookings/:id` - Update booking status
 - `DELETE /api/bookings/:id` - Cancel booking
 
-## 🚀 Setup & Installation
+## Setup & Installation
 
 ### Prerequisites
 - Python 3.8+
@@ -132,7 +132,7 @@ flask run --port=8000
 
 The API will be available at `http://localhost:8000`
 
-## 🧪 Testing
+## Testing
 
 Run tests with:
 ```bash
@@ -144,7 +144,7 @@ Run with coverage:
 pytest --cov=app tests/
 ```
 
-## 🔧 Development
+## Development
 
 ### Running in development mode
 ```bash
@@ -164,7 +164,7 @@ flask db upgrade
 flask db downgrade
 ```
 
-## 📝 Environment Variables
+## Environment Variables
 
 See `.env.example` for required environment variables.
 
@@ -174,16 +174,16 @@ Key variables:
 - `JWT_SECRET_KEY` - JWT signing key
 - `CORS_ORIGINS` - Allowed CORS origins
 
-## 🤝 Contributing
+## Contributing
 
 This is a Phase 3 group project:
 - **Scrum Master**: Linda Jerop (@LogicLegends)
 - **Contributors**: Ian Nasoore, David Kamau, Sasha Lisa, Banai Marysah
 
-## 📄 License
+## License
 
 This project is part of a software engineering preparation program.
 
-## 🔗 Related Repositories
+## Related Repos
 
 - Frontend: [frontend-find-my-chef](https://github.com/Linda-Jerop/frontend-find-my-chef)

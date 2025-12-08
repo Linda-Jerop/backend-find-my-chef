@@ -8,6 +8,12 @@ engine = create_engine(settings.DATABASE_URL, connect_args={"check_same_thread":
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
+# Importing model modules to ensure declarative models are registered with Base.metadata
+import app.models.user  # Registering User model
+import app.models.chef  # Registering Chef model
+import app.models.client  # Registering Client model
+import app.models.booking  # Registering Booking model
+
 
 def get_db():
     db = SessionLocal()
@@ -15,6 +21,10 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+# Importing models to ensure they are registered on Base when the app package is imported  # Ensuring metadata is populated for tests
+import app.models  # noqa: E402,F401
 
 
 def create_app() -> FastAPI:
