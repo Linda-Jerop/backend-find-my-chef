@@ -22,7 +22,7 @@ class TestChefSearch:
             sample_user_data["role"] = "chef"
             client.post("/api/auth/register", json=sample_user_data)
         
-        # Get all chefs
+        # Get all the chefs
         response = client.get("/api/chefs")
         
         assert response.status_code == status.HTTP_200_OK

@@ -7,4 +7,4 @@ from config.settings import Settings, settings
 Config = Settings  # Providing backwards-compatible name 'Config'
 config = settings  # Providing backwards-compatible name 'config'
 
-__all__ = ['Config', 'config']
+__all__ = ['settings']

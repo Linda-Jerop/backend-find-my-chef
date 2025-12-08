@@ -1,6 +1,6 @@
 # Find My Chef - Database Schema
 
-## 📊 Database Diagram
+## Database's Diagram
 
 You should create this diagram on [dbdiagram.io](https://dbdiagram.io) as per project requirements.
 
@@ -57,7 +57,7 @@ You should create this diagram on [dbdiagram.io](https://dbdiagram.io) as per pr
         └─────────────┘
 ```
 
-## 🔗 Relationships
+## Relationships
 
 ### 1. User → Chef (One-to-One)
 - **Relationship**: `users.id` ← `chefs.user_id`
@@ -83,7 +83,7 @@ You should create this diagram on [dbdiagram.io](https://dbdiagram.io) as per pr
 - **Purpose**: Track all appointments for a chef
 - **Example**: Chef dashboard shows all booking requests
 
-## 📝 dbdiagram.io Code
+## dbdiagram.io Code
 
 Paste this into [dbdiagram.io](https://dbdiagram.io) to generate the diagram:
 
@@ -142,7 +142,7 @@ Table bookings {
 }
 ```
 
-## 🎯 Key Design Decisions
+## Our main/key Design Decisions
 
 ### Why Two Tables for Users?
 - **Separation of Concerns**: Authentication (users) vs Business Logic (chefs/clients)
@@ -159,7 +159,7 @@ Table bookings {
 - **Type Safety**: Backend validates values automatically
 - **Consistency**: Frontend and backend use same status values
 
-## 📦 Sample Data Flow
+## Sample Data Flow
 
 ### User Registration (as Chef):
 1. Create record in `users` table (email, password, role='chef')
