@@ -2,16 +2,17 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from app import create_app, Base, get_db
+from app import create_app, Base, get_db, engine as app_engine, SessionLocal as AppSessionLocal
+import app.models  # Importing models so SQLAlchemy registers tables before create_all
 
-SQLALCHEMY_TEST_DATABASE_URL = "sqlite:///:memory:"
-engine = create_engine(SQLALCHEMY_TEST_DATABASE_URL, connect_args={"check_same_thread": False})
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+# Using the app engine/session here so tests and app share the same SQLite connection
+engine = app_engine
+TestingSessionLocal = AppSessionLocal
 
 
 @pytest.fixture(scope="function")
 def db_session():
-    Base.metadata.create_all(bind=engine)  # Create fresh tables for each test.
+    Base.metadata.create_all(bind=engine)  # Creating fresh tables for each test.
     session = TestingSessionLocal()
     try:
         yield session
