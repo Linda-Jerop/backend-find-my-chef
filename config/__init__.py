@@ -1,6 +1,3 @@
-"""
-Configuration package for Find My Chef
-"""
-from config.settings import Config, config
+from config.settings import settings
 
-__all__ = ['Config', 'config']
+__all__ = ['settings']
